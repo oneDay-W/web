@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>weiHooome</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 引入css文件 -->
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <!-- 粒子背景 -->
+    <div id="particles-js"></div>
+
+    <!-- 加载动画 -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <div class="loader-text">等我一下，我去拿点爆米花...</div>
+        </div>
+    </div>
+
+    <!-- 滚动进度条 -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+
+    <!-- 回到顶部按钮 -->
+    <div class="back-to-top" id="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- 鼠标跟随效果 -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- 导航栏 -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-robot"></i>
+                oneDay
+            </a>
+            <!-- 导航链接，无序列表 -->
+            <ul class="nav-links">
+                <li><a href="#home">首页</a></li>
+                <li><a href="#about">关于我</a></li>
+                <li><a href="#skills">技能</a></li>
+                <li><a href="#portfolio">作品集</a></li>
+                <li><a href="#photography">摄影集</a></li>
+                <li><a href="#blog">博客</a></li>
+                <li><a href="#contact">联系我</a></li>
+                <!-- 音乐播放器 -->
+                <li>
+                    <!-- 音乐播放器按钮 -->
+                    <button class="music-toggle" id="music-toggle">
+                        <i class="fas fa-music"></i>
+                    </button>
+                    <div class="music-player" id="music-player">
+                        <!-- 音乐播放器表头 -->
+                        <div class="music-header">
+                            <div class="music-title">音乐播放器</div>
+                            <!-- 音乐播放器控制按钮 -->
+                            <div class="music-controls">
+                                <!-- 关闭按钮 -->
+                                <button class="music-btn" id="close-btn"><i class="fas fa-times"></i></button>
+                            </div>
+                        </div>
+                        <!-- 音乐播放器内容 -->
+                        <div class="music-content">
+                            <div class="track-info">
+                                <div class="track-cover">
+                                    <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="专辑封面">
+                                </div>
+                                <div class="track-details">
+                                    <div class="track-name">111</div>
+                                    <div class="track-artist">222</div>
+                                </div>
+                            </div>
+                            <!-- 音乐可视化 -->
+                            <div class="visualizer">
+                                <!-- 每个小长条 -->
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                            </div>
+                            
+                            <!-- 进度条区域 -->
+                            <div class="progress-area">
+                                <!-- 歌曲时间进度条 -->
+                                <div class="progress-bar">
+                                    <div class="progress" id="progress"></div>
+                                </div>
+                                <div class="timer">
+                                    <!-- 当前时间 -->
+                                    <span id="current-time">0:00</span>
+                                    <!-- 整体时间 -->
+                                    <span id="total-time">0:00</span>
+                                </div>
+                            </div>
+                            
+                            <!-- 音乐控制按钮 -->
+                            <div class="controls">
+                                <!-- 上一首按钮 -->
+                                <button class="music-btn" id="prev-btn"><i class="fas fa-step-backward"></i></button>
+                                <div class="main-controls">
+                                    <!-- 播放暂停按钮 -->
+                                    <button class="play-pause" id="play-pause-btn">
+                                        <i class="fas fa-play" id="play-icon"></i>
+                                    </button>
+                                </div>
+                                <!-- 下一首按钮 -->
+                                <button class="music-btn" id="next-btn"><i class="fas fa-step-forward"></i></button>
+                            </div>
+                            
+                            <!-- 音量控制 -->
+                            <div class="volume-control">
+                                <!-- 增加音量 -->
+                                <button class="music-btn" id="volume-btn"><i class="fas fa-volume-up"></i></button>
+                                <!-- 音量条 -->
+                                <div class="volume-bar">
+                                    <div class="volume-level" id="volume-level"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- 播放列表 -->
+                            <div class="playlist">
+                                <div class="playlist-item active">
+                                    <!-- 播放列表项 -->
+                                    <span class="track-index">1</span>
+                                    <!-- 歌曲名 -->
+                                    <span class="track-name">又活了一天（哈基米版）</span>
+                                </div>
+                                <div class="playlist-item">
+                                    <span class="track-index">2</span>
+                                    <span class="track-name">This Is Why I Was Born</span>
+                                </div>
+                                <div class="playlist-item">
+                                    <span class="track-index">3</span>
+                                    <span class="track-name">程艾影</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- 明暗主题按钮 -->
+                <li>
+                    <button class="theme-toggle" id="theme-toggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
+            </ul>
+            
+            <!--  -->
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主内容区域 -->
+    <main>
+        <!-- 英雄区域 -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>个人开发者</h1>
+                <p>探索数字世界的边界，创造未来的可能性。专注于前沿技术研究与创新应用开发。</p>
+                <!-- portfolio（作品集） -->
+                <a href="#portfolio" class="btn">探索项目</a>
+            </div>
+            
+            <!-- 3D立方体效果 -->
+            <div class="cube-container">
+                <div class="cube">
+                    <div class="cube-face front"><i class="fas fa-code"></i></div>
+                    <div class="cube-face back"><i class="fas fa-robot"></i></div>
+                    <div class="cube-face right"><i class="fas fa-microchip"></i></div>
+                    <div class="cube-face left"><i class="fas fa-brain"></i></div>
+                    <div class="cube-face top"><i class="fas fa-rocket"></i></div>
+                    <div class="cube-face bottom"><i class="fas fa-atom"></i></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 关于区域 -->
+        <section id="about" class="about">
+            <!-- 章节标题 -->
+            <h2 class="section-title">关于我</h2>
+            <div class="about-content">
+                <!-- 关于界面的文本 -->
+                <div class="about-text">
+                    <p>你好！我是一名专注于前沿技术的个人开发者，拥有超过10000...年的开发经验。我热衷于探索人工智能、具身智能等新兴技术。</p>
+                    <p>我的技术栈包括HTML5、CSS3、JavaScript、Vue、Node.js、Python和多种数据库技术。我不仅关注代码质量，还注重产品的整体设计和用户体验。</p>
+                    <p>在业余时间，我热衷于研究新技术、参加开发者社区活动，并为开源项目做出贡献。我相信技术能够改变世界，创造更美好的未来。</p>
+                    <!-- 链接到联系我界面 -->
+                    <a href="#contact" class="btn" style="margin-top: 1.5rem;">联系我</a>
+                </div>
+                <!-- 关于界面的图片 -->
+                <div class="about-image">
+                    <!-- 为什么代码中文本在上，显示却是文本在下 -->
+                    <img src="./pictures/机械臂.jpg" alt="关于我的图片">
+                </div>
+            </div>
+        </section>
+
+        <!-- 技能区域 -->
+        <section id="skills" class="skills">
+            <h2 class="section-title">我的技能</h2>
+            <div class="skills-container">
+                <!-- 技能卡片 -->
+                <div class="skill-card">
+                    <!-- 代码图标 -->
+                    <div class="skill-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>前端开发</h3>
+                    <!-- 详细介绍 -->
+                    <p>HTML5, CSS3, JavaScript, Vue.js, 响应式设计</p>
+                    <!-- 前端开发技能描述 -->
+                    <div class="skill-level">
+                        <!-- 技能条 -->
+                        <div class="skill-progress" data-level="90"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3>后端开发</h3>
+                    <p>Node.js, Python, API, 数据库设计</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" data-level="80"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>移动开发</h3>
+                    <p>知识体系构建中...</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" data-level="30"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI与机器学习</h3>
+                    <p>知识体系构建中...</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" data-level="30"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 作品集区域 -->
+        <section id="portfolio" class="portfolio">
+            <h2 class="section-title">我的作品</h2>
+            <!-- 作品集分类 -->
+            <div class="portfolio-filters">
+                <!-- 分类按钮，默认选中 -->
+                <button class="filter-btn active" data-filter="all">全部</button>
+                <button class="filter-btn" data-filter="web">网站</button>
+                <button class="filter-btn" data-filter="app">应用</button>
+                <button class="filter-btn" data-filter="ai">人工智能</button>
+            </div>
+            <!-- 作品集网格 -->
+            <div class="portfolio-grid">
+                <!-- 作品介绍及分类 -->
+                <div class="portfolio-item" data-category="web">
+                    <!-- 作品图片 -->
+                    <div class="portfolio-img">
+                        <img src="./pictures/机械臂.jpg" alt="项目1">
+                    </div>
+                    <!-- 作品信息 -->
+                    <div class="portfolio-info">
+                        <h3>基于Unity3D的机械臂虚拟交互平台系统</h3>
+                        <p>使用Unity3D进行仿真，实现机械臂的虚拟操作</p>
+                        <!-- 查看详情跳转 -->
+                        <a href="#" class="read-more view-project" data-project="1">查看详情</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 摄影集区域 -->
+        <section id="photography" class="photography">
+            <h2 class="section-title">摄影集</h2>
+            <!-- 总体介绍 -->
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; font-size: 1.1rem;">用镜头捕捉世界的美丽瞬间，从城市景观到自然风光，每一张照片都讲述着一个独特的故事。</p>
+            <!-- 照片分类 -->
+            <div class="photography-filters">
+                <!-- 分类按钮，默认选中 -->
+                <button class="photo-filter-btn active" data-filter="all">全部</button>
+                <button class="photo-filter-btn" data-filter="nature">自然风光</button>
+                <button class="photo-filter-btn" data-filter="urban">城市景观</button>
+                <button class="photo-filter-btn" data-filter="portrait">人像摄影</button>
+                <button class="photo-filter-btn" data-filter="abstract">抽象艺术</button>
+                <button class="photo-filter-btn" data-filter="gugong">故宫</button>
+            </div>
+            <!-- 照片网格 -->
+            <div class="photography-grid">
+                <!-- 照片信息及分类 -->
+                <div class="photo-item" data-category="gugong">
+                    <!-- 照片 -->
+                    <div class="photo-img">
+                        <img src="./pictures/绿树红墙.jpg" alt="故宫">
+                    </div>
+                    <!-- 照片信息 -->
+                    <div class="photo-info">
+                        <h3>绿树红墙</h3>
+                        <!-- 照片详细信息（时间、地点） -->
+                        <div class="photo-meta">
+                            <span><i class="far fa-calendar"></i> 2025-10-22</span>
+                            <span><i class="fas fa-map-marker-alt"></i> 北京</span>
+                        </div>
+                        <!-- 照片描述 -->
+                        <p class="photo-description">和同学逛故宫，看见红墙配这绿树，挺有感觉的，遂拍</p>
+                    </div>
+                </div>
+                <div class="photo-item" data-category="gugong">
+                    <div class="photo-img">
+                        <img src="./pictures/故宫一角.jpg" alt="故宫">
+                    </div>
+                    <div class="photo-info">
+                        <h3>故宫一角</h3>
+                        <div class="photo-meta">
+                            <span><i class="far fa-calendar"></i> 2025-10-22</span>
+                            <span><i class="fas fa-map-marker-alt"></i> 北京</span>
+                        </div>
+                        <p class="photo-description">在故宫外排队检票的时候，感觉那个角落挺有意思的，但是自己拍不出那种感觉</p>
+                    </div>
+                </div>
+                <div class="photo-item" data-category="nature">
+                    <div class="photo-img">
+                        <img src="./pictures/天空.jpg" alt="自然风光">
+                    </div>
+                    <div class="photo-info">
+                        <h3>天空</h3>
+                        <div class="photo-meta">
+                            <span><i class="far fa-calendar"></i> 2025-11-01</span>
+                            <span><i class="fas fa-map-marker-alt"></i> 辽宁</span>
+                        </div>
+                        <p class="photo-description">坐在窗边，看到外面的天空，感受到宁静与美好。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 项目详情模态框 -->
+        <div class="modal" id="project-modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <div id="modal-body">
+                    <!-- 动态内容将在这里加载 -->
+                </div>
+            </div>
+        </div>
+
+        <!-- 博客区域 -->
+        <section id="blog" class="blog">
+            <h2 class="section-title">技术博客</h2>
+            <!-- 博客网格 -->
+            <div class="blog-grid">
+                <div class="blog-item">
+                    <!-- 博客封面 -->
+                    <div class="blog-img">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="博客1">
+                    </div>
+                    <!-- 博客信息 -->
+                    <div class="blog-info">
+                        <h3>量子计算的未来展望</h3>
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> 2025-10-15</span>
+                            <span><i class="far fa-comment"></i> 0 评论</span>
+                        </div>
+                        <p class="blog-excerpt">探讨量子计算技术的现状、挑战以及未来可能的应用领域，分析量子霸权对传统计算的冲击...</p>
+                        <!-- 详细信息跳转 -->
+                        <a href="blog.html" class="read-more">阅读更多</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 联系区域 -->
+        <section id="contact" class="contact">
+            <h2 class="section-title">联系我</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>获取联系</h3>
+                    <p>如果您对我的工作感兴趣或想讨论潜在的合作机会，请随时与我联系。</p>
+                    <!-- 邮箱 -->
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <span>isshiwei@163.com</span>
+                    </div>
+                    <!-- 电话 -->
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <span>+86 156 6878 8852</span>
+                    </div>
+                    <!-- 地址 -->
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <span>中国，北京</span>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>发送消息</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">姓名</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">邮箱</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">消息</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        <!-- 提交按钮 -->
+                        <button type="submit" class="btn">发送消息</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-content">
+            <h3>个人开发者</h3>
+            <p>探索未知，创造未来。感谢您访问我的个人网站。</p>
+            <ul class="social-links">
+                <li><a href="https://github.com/oneDay-W"><i class="fab fa-github"></i></a></li>
+                <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+            </ul>
+            <!-- 版权信息 -->
+            <div class="copyright">
+                <p>&copy; 2025 oneDay. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- 引入粒子库，内联样式 -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <!-- 引入js文件，外联样式 -->
+    <script src="./js/script.js"></script>
+</body>
+</html>
